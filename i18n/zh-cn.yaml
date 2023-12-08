@@ -1,0 +1,4 @@
+article:
+  date: "{{ .Date }}"
+  date_updated: "更新于: {{ .Date }}"
+  table_of_contents: "Table of Contents"

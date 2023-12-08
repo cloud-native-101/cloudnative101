@@ -1,0 +1,25 @@
+languageCode = "zh-cn"
+languageName = "简体中文"
+weight = 1
+title = "Cloud Native 101"
+contentDir = "content"
+
+[params]
+  displayName = "中文"
+  isoCode = "zh-cn"
+  rtl = false
+  dateFormat = "2006年1月2日"
+  logo = "img/logo.png"
+  # secondaryLogo = "img/secondary-logo.png"
+  description = "探索 Cloud Native 101 的世界，我们的博客是云原生技术的导航灯塔，涵盖容器、Kubernetes、Istio、DevOps 等前沿技术。加入我们，让复杂的云原生技术变得触手可及，为您的技术旅程提供全面的指南和深入的分析。"
+
+[author]
+  name = "Cloud Native 101"
+  image = "img/logo.jpg"
+  headline = "与「Cloud Native 101」同行，让云原生技术触手可及！"
+  bio = "与「Cloud Native 101」同行，让云原生技术触手可及！"
+  links = [
+    { rss = "/index.xml" },
+    { wechat = "https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/qrcode_for_gh_d4af6d9e7561_1280.jpg"},
+    # { email = "mailto:qiong.lin@basebit.ai" },
+]

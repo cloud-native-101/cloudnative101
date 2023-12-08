@@ -1,0 +1,31 @@
+<div
+  class="text-neutral-700 dark:text-neutral-300"
+  style="text-align: center; font-size: 16px; font-family: cursive"
+>
+
+<center>
+  <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/qrcode_cloudnative101.png" width="40%" />
+</center>
+<center>关注公众号 「Cloud Native 101」，设为<span style="color: rgb(255, 169, 0); font-weight: 500;">「星标」</span>，不迷路！</center>
+
+</div>
+
+
+{{ with .Params.sharingLinks | default (.Site.Params.article.sharingLinks | default false) }}
+  {{ $links := site.Data.sharing }}
+  <section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+    {{ range . }}
+      {{ with index $links . }}
+      <a
+      target="_blank"
+      class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+      href="{{ printf .url $.Permalink $.Title }}"
+      title="{{ i18n .title }}"
+      aria-label="{{ i18n .title }}"
+      >
+      {{ partial "icon.html" .icon }}
+    </a>
+      {{ end }}
+    {{ end }}
+  </section>
+{{ end }}
