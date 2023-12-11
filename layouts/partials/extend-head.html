@@ -1,0 +1,12 @@
+<!-- umami -->
+<script async src="https://eu.umami.is/script.js" data-website-id="3cd976b6-e8ba-42e5-a124-5f1ffbff8491"></script>
+
+<!--顶部阅读进度条-->
+<div class="top-scroll-bar" style="height: 5px; background-color: #ffb11b; width: 0; position: fixed; top: 0; z-index: 100;"></div>
+<script type="text/javascript">
+$(document).ready(function () {
+  $(window).scroll(function(){
+    $(".top-scroll-bar").attr("style", "width: " + ($(this).scrollTop() / ($(document).height() - $(this).height()) * 100) + "%; display: block;");
+  });
+})
+</script>
