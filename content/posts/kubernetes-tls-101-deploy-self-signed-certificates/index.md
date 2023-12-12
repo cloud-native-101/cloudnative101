@@ -9,7 +9,7 @@ keywords:
 - self-signed certificate
 title: "Kubernetes TLS 101: 在本地 K8s 中轻松部署自签 TLS 证书"
 subtitle: "云原生小技巧：在本地 K8s 中轻松部署自签 TLS 证书"
-description: "本文详细介绍了在本地 Kubernetes 环境中配置和使用自签 TLS/SSL 证书的过程，以实现 HTTPS 的安全访问。文章逐步引导读者通过 Kind 创建本地 Kubernetes 集群，安装和配置 Traefik，以及使用 Dnsmasq 和 CFSSL/mkcert 工具生成和管理自签名证书。适合 Kubernetes 开发者阅读，以提升本地开发环境的安全性和便利性。"
+description: "探索如何在本地 Kubernetes 环境中配置和使用自签 TLS/SSL 证书，包括创建集群、配置 Traefik 和生成证书，以增强安全性和便利性。"
 date: 2023-11-03T08:18:22+08:00
 draft: false
 author: LQ
@@ -323,7 +323,7 @@ kind.cluster.           0       IN      A       127.0.0.1
 
 🎉 下面我们来做个验证吧。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/deploy-self-signed-certificates/a4962a03-5d18-46da-a8dd-04ac8d518d85.png)
+![nginx](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/deploy-self-signed-certificates/a4962a03-5d18-46da-a8dd-04ac8d518d85.png)
 
 ## 5. 信任自签名证书
 
@@ -337,15 +337,27 @@ kind.cluster.           0       IN      A       127.0.0.1
 
 **步骤 2**: 然后右键点击你导入的证书，选择“获取信息”。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/deploy-self-signed-certificates/38919587-ff8f-4cb6-b9c4-3eade8932d7e.png)
+{{< figure
+    src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/deploy-self-signed-certificates/38919587-ff8f-4cb6-b9c4-3eade8932d7e.png"
+    alt="获取信息"
+    caption="获取信息"
+    >}}
 
 **步骤 3**: 展开“信任”部分，在“使用此证书时”选择“始终信任”
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/deploy-self-signed-certificates/3eea6937-dcc6-46b0-9554-33c0df7164d3.png)
+{{< figure
+    src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/deploy-self-signed-certificates/3eea6937-dcc6-46b0-9554-33c0df7164d3.png"
+    alt="选择“始终信任”"
+    caption="选择“始终信任”"
+    >}}
 
 **步骤 4**: 最后，让我们再来做下验证 🎉
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/deploy-self-signed-certificates/8b03942c-c658-482a-b174-0180c8d6ffd4.png)
+{{< figure
+    src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/deploy-self-signed-certificates/8b03942c-c658-482a-b174-0180c8d6ffd4.png"
+    alt="验证"
+    caption="验证"
+    >}}
 
 我们也可以通过 `CURL` 来验证，它也不再报任何的错误，效果如下所示
 
@@ -391,7 +403,7 @@ mkcert '*.kind.cluster'
 大家不妨试下，这玩意完全可以替代 `CFSSL`，它对于本地开发和测试来说是足够的。
 
 <center>
-<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice-2.gif" width="30%" />
+<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice-2.gif" width="30%" alt="Nice" />
 </center>
 
 ## 写在后面

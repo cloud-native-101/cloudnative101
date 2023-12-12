@@ -7,7 +7,7 @@ keywords:
 - orbstack
 title: "Kubernetes Networking 101: OrbStack - 本地 K8s 环境的域名映射优化，开发者的新宠"
 subtitle: "云原生小技巧：OrbStack — 本地 K8s 环境的域名映射优化，开发者的新宠"
-description: 本文介绍了 OrbStack，一款优化本地 Kubernetes 环境域名映射的工具，特别适合追求效率的开发者。文章详细讲述了 OrbStack 的核心功能，包括为容器赋予独特域名、支持 mDNS 进行域名解析、允许自定义容器域名等。同时，文章还探讨了 OrbStack 如何与 Kind 集群协作，以及其在本地 Kubernetes 环境中的应用，展示了如何通过 OrbStack 简化和优化本地开发环境。适合 Kubernetes 开发者阅读，以提升他们的开发效率和体验。
+description: 探索 OrbStack：一款针对本地 Kubernetes 环境的域名映射优化工具。本文深入分析了其独特功能，如为容器赋予个性化域名和支持 mDNS 域名解析，以及与 Kind 集群的协作，旨在提高 Kubernetes 开发者的效率和本地开发体验。
 date: 2023-11-06T08:18:00+08:00
 lastmod: 2023-12-09T11:07:04+08:00
 weight: 99
@@ -48,15 +48,15 @@ docker run -d -p 3000:80 --name getting-started docker/getting-started
 
 下面是我本地容器运行的情况
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/392e5edb-165c-4efd-9fc7-a5ee95352fcd.png)
+![本地运行情况](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/392e5edb-165c-4efd-9fc7-a5ee95352fcd.png)
 
 在以往，我需要通过 **localhost + port** 的方式来访问这个容器。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/aae5cbe2-c549-4f96-a309-42bb0b5f6373.png)
+![localhost 访问](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/aae5cbe2-c549-4f96-a309-42bb0b5f6373.png)
 
 现在呢？只需通过 `OrbStack` 分配的域名，我就可以畅通无阻地访问它，而且不需要指定端口，非常的丝滑。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/21feef92-d170-45c7-bba6-ba4582d9f545.png)
+![域名访问](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/21feef92-d170-45c7-bba6-ba4582d9f545.png)
 
 ### mDNS
 
@@ -119,7 +119,7 @@ Timestamp     A/R  Flags         IF  Name                          Type   Class 
 
 Cool...有了这个能力就非常赞了，我可以轻松地将我的本地 Mysql 连接调整成这个样子。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/62335551-49ec-49cf-a1ba-7c38385cefbc.png)
+![mysql](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/62335551-49ec-49cf-a1ba-7c38385cefbc.png)
 
 ### 自定义域名
 
@@ -131,17 +131,17 @@ docker run --rm -l dev.orbstack.domains=foobar.local docker/getting-started
 
 > 正如上面提到的 OrbStack 是通过 mDNS 来实现域名到 IP 的解析，所以它只对 `.local` 这个 TLD 有效，在做自定义域名的时候需要注意下。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/deaf9a38-ee38-48dc-b83c-6543619537e7.png)
+![TLD](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/deaf9a38-ee38-48dc-b83c-6543619537e7.png)
 
 ### Domain names
 
 通过访问 `http://orb.local` 我们可以看到所有正在运行的容器链接。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/cc6d7d27-4dc5-4063-a20e-6a9ea6c64513.png)
+![DOMAIN NAMES](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/cc6d7d27-4dc5-4063-a20e-6a9ea6c64513.png)
 
 甚至可以在它的客户端上查看容器列表，单击信息图标获取。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/7369f29e-dd8a-4619-a64d-124ba339255e.png)
+![ADDRESS](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/7369f29e-dd8a-4619-a64d-124ba339255e.png)
 
 ## OrbStack + Kind
 
@@ -151,7 +151,7 @@ docker run --rm -l dev.orbstack.domains=foobar.local docker/getting-started
 
 通过 UI，获取到 Kind 集群的域名：`local-control-plane.orb.local`
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/46761709-fe93-4fdf-9587-8ae9c78dba69.png)
+![cluster domain](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/46761709-fe93-4fdf-9587-8ae9c78dba69.png)
 
 ### 2. 创建 K8s TLS Secret
 
@@ -217,7 +217,7 @@ EOF
 
 完成这些步骤后，我们就可以愉快地验证一下了，中间我们不需要对 DNS 做任何的配置。 🎉
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/14ca044c-d083-4294-be1c-0614794e549d.png)
+![cert](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/14ca044c-d083-4294-be1c-0614794e549d.png)
 
 ## HTTPS for containers
 
@@ -225,7 +225,7 @@ EOF
 小贴士：`OrbStack` 在其即将到来的稳定版中将默认启用 HTTPS 支持，这意味着我们将不再需要手动创建、安装或信任自签名证书，为本地开发者带来前所未有的便捷。
 {{< /alert >}}
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/3d80ea35-bbd5-49fd-a2bc-a9b017b0c2cf.png)
+![canary](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/3d80ea35-bbd5-49fd-a2bc-a9b017b0c2cf.png)
 
 对于那些迫不及待想要体验最新功能的小伙伴们，可以通过以下步骤来抢先体验：进入设置，选择更新通道为 `Canary(faster)`，然后在 OrbStack 菜单中选择检查更新。
 
@@ -233,13 +233,13 @@ EOF
 
 升级完后，容器里已有的服务就可以直接通过 `https://getting-started.orb.local/` 访问了。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/dabad70d-60e7-4229-acb0-57fbb8528f2b.png)
+![img](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/dabad70d-60e7-4229-acb0-57fbb8528f2b.png)
 
 ## OrbStack 的原生 K8s 支持
 
 事实上 OrbStack 提供了一个轻量级的单节点 K8s 集群，它对于开发环境来说是优化的。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/98c63b9f-830d-4646-8767-2b18c2f076f7.png)
+![k8s](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/k8s-networking-orbstack-optimization/98c63b9f-830d-4646-8767-2b18c2f076f7.png)
 
 在本地开发，如果没有 `multi-node clusters` 需求的话，我们可以不用 Kind 自建集群，直接用它就好。
 
@@ -262,7 +262,7 @@ helm upgrade -i traefik \
 > 大家可以直接看 [Using Kubernetes](https://docs.orbstack.dev/kubernetes/ "Using Kubernetes")，这里不再赘述。
 
 <center>
-<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice-4.gif" width="40%" />
+<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice-4.gif" width="40%" alt="Nice" />
 </center>
 
 ## 写在后面

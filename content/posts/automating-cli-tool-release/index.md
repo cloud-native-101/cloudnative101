@@ -5,7 +5,7 @@ keywords:
 - goreleaser
 title: "Cloud Native Tools 101: 如何自动化发布 CLI 工具"
 subtitle: "云原生小技巧: 如何自动化发布 CLI 工具？"
-description: 本文探讨了如何在云原生时代自动化发布 CLI 工具，特别关注多架构和多平台兼容性问题。文章详细介绍了编写跨平台构建脚本的方法、结合 Makefile 实现自动化构建的步骤，以及在 GitLab CI/CD 中实现自动发布流程的技巧。此外，文章还介绍了使用 GoReleaser 工具来简化自动化发布过程。适合开发者阅读，以优化他们的构建和发布流程。
+description: 本文详解如何在云原生时代自动化发布 CLI 工具，着重于跨平台兼容性、Makefile 自动化构建与 GitLab CI/CD 发布流程，适合开发者优化构建发布。
 date: 2023-12-04T08:18:00+08:00
 weight: 99
 draft: false
@@ -18,7 +18,7 @@ tags:
 - 云原生小技巧
 ---
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/automating-cli-tool-release/6964e503-54a2-490c-bd68-5de88cee5332.jpeg)
+![cover](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/automating-cli-tool-release/6964e503-54a2-490c-bd68-5de88cee5332.jpeg)
 
 在云原生时代，CLI 工具已成为开发者日常工作中不可或缺的一部分。然而，将开发好的 CLI 工具分享给大家使用，如果仅依赖手动发布，不仅效率低，且易出错，特别是在处理多架构和多平台兼容性时尤为明显。
 
@@ -208,7 +208,7 @@ release:
 
 以上示例将会构建 CLI 工具二进制文件，并将其上传到 Gitlab 发布页面。用户可以从 Gitlab  Release 页面查找并下载适合其平台的二进制包即可。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/automating-cli-tool-release/e20db937-9d5a-4672-a31d-d5279b38253a.png)
+![Release v0.0.1](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/automating-cli-tool-release/e20db937-9d5a-4672-a31d-d5279b38253a.png)
 
 > 有关详细的 GitLab CI 流程，可以参考项目：<https://gitlab.com/lqshow/clireleaseautomator>
 
@@ -305,14 +305,14 @@ release:
 
 通过 GoReleaser 发布的结果在 GitLab 的 release 页面清晰可见。如下图所示，每个构建的二进制文件都被自动上传并与相应的发布关联。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/automating-cli-tool-release/4b2c29d2-2ed7-4782-8d00-6ff8730ad45a.png)
+![Release v0.0.1](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/automating-cli-tool-release/4b2c29d2-2ed7-4782-8d00-6ff8730ad45a.png)
 
 > **详细项目可参考**：<https://gitlab.com/lqshow/clireleaseautomator-with-goreleaser>
 
 {{< gitlab projectID="52722059" >}}
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice.gif" width="30%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice.gif" width="40%" alt="nice" />
 </center>
 
 ## 写在最后

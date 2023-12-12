@@ -4,9 +4,9 @@ keywords:
 - cloud native 101
 - kubernetes
 - webhook
-title: "Kubernetes Debugging 101: 如何在本地调试 Kubernetes Webhook"
-subtitle: "云原生小技巧: 如何在本地调试 Kubernetes Webhook"
-description: 本文提供了一种清晰的指南，帮助 Kubernetes 开发者在本地环境中高效地调试 Webhook。文章详细介绍了本地调试的重要性、使用自签证书、调整 Makefile、使用隧道工具等方法，以及如何通过 kubectl explain 探索和调整 Webhook 配置。适合 Kubernetes 开发者阅读，以优化他们的本地开发和测试流程。
+title: "Kubernetes Debugging 101: 如何在本地调试 K8s Webhook"
+subtitle: "云原生小技巧: 如何在本地调试 K8s Webhook"
+description: 本指南为 Kubernetes 开发者提供本地调试 Webhook 的高效策略，包括使用自签证书、调整 Makefile 和使用隧道工具，助力优化本地开发和测试流程。
 date: 2023-11-27T08:18:00+08:00
 weight: 99
 draft: false
@@ -21,7 +21,7 @@ tags:
 - Kubernetes Debugging 101
 ---
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-debugging-101-local-webhook-testing/c9dedf33-c414-400e-9dc7-d9db4102606f.webp)
+![cover](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-debugging-101-local-webhook-testing/c9dedf33-c414-400e-9dc7-d9db4102606f.webp)
 
 如果你是一名 Kubernetes Operator 的开发者，你曾经是否面临过这样一个棘手的问题：如何在本地环境中高效地调试 Webhook，尤其是在涉及有效证书回调的情况下。这篇文章旨在提供一种清晰的指南，帮助你克服这一挑战，优化本地开发和测试流程。
 
@@ -290,7 +290,7 @@ webhooks:
 
 事实上，我们当前 webhook 的调试场景，完全可以利用 [Nocalhost](https://nocalhost.dev "Nocalhost") 这款工具达到同样的目的。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/640.gif)
+![nocalhost](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/640.gif)
 
 在 Nocalhost 的开发模式下，我们可以直接在 K8s 集群中构建、测试和调试应用程序的，这意味着我们可以默认使用 `clientConfig.service 模式`，直接通过内部服务来连接，非常的方便。如果你还不太熟悉 Nocalhost，那可得抓紧时间补课了 😉
 
@@ -301,7 +301,7 @@ webhooks:
 {{< github repo="lqshow/testing-webhooks" >}}
 
 <center>
-<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice.gif" width="30%" />
+<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice.gif" width="40%" alt="Nice" />
 </center>
 
 ## 写在最后

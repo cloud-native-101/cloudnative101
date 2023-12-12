@@ -6,7 +6,7 @@ keywords:
 - csi
 title: "Kubernetes Storage 101: 浅谈 Kubernetes 存储概念，解锁数据驱动的力量"
 subtitle: "全面解析 Kubernetes 存储体系"
-description: 本文深入探讨 Kubernetes 存储的基础知识，包括 Volume、PV、PVC 和 Storage Class 的概念及应用。文章详细阐述了 Kubernetes 存储的重要性和实践应用，为云原生应用的数据存储提供了全面的指导和解决方案。适合对 Kubernetes 存储感兴趣的开发者和运维人员阅读。
+description: 探索 Kubernetes 存储：深入了解 Volume、PV、PVC 和 Storage Class 的概念及其应用，提供全面的指导和解决方案，适合 Kubernetes 存储感兴趣的开发者和运维人员。
 date: 2023-07-22T22:22:22+08:00
 draft: false
 author: LQ
@@ -19,7 +19,7 @@ tags:
 ---
 
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/f69491e2-f856-4d85-bbda-4dac98bc24f9.png)
+![cover](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/f69491e2-f856-4d85-bbda-4dac98bc24f9.png)
 
 Kubernetes 可以说是已经成为云原生分布式操作系统的事实标准了，它最大的优势在于可扩展性，不论是计算、**存储**还是网络，它都可以根据使用者的需求来进行灵活扩展。
 
@@ -76,7 +76,7 @@ kubectl explain pod.spec.volumes
 > 下面这张表格是根据存储插件的种类，做的 2 个大类，表格里只列出了比较常用的卷类型，但还有其他类型可以在官方文档的 Types of Persistent Volumes<sup>\[1\]</sup> 中找到。
 > 如果有对 In-Tree Volume<sup>\[2\]</sup> 的实现感兴趣的同学，可以查看源代码。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/b4726ba2-cce0-46a3-ad49-877a684cf94d.png)
+![In-Tree Volume](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/b4726ba2-cce0-46a3-ad49-877a684cf94d.png)
 
 那么 **In-Tree** 和 **Out-Of-Tree** 两者有什么区别呢？我们可以从字面上先大致理解一下它们的区别，后续我会详细介绍它们的不同之处。
 
@@ -257,7 +257,7 @@ HostPath 它是将宿主机节点上的文件系统上的文件或目录，直�
 
 HostPath 通常和 DaemonSet 搭配使用，我们继续以上面提到的日志收集为例，每个节点上会跑一个 Logging agent（Fluentd），它会挂载宿主机上的容器日志目录，来达到收集当前主机日志的目的。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/db7f0377-91c4-4051-b9e2-033455e2875e.png)
+![HostPath](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/db7f0377-91c4-4051-b9e2-033455e2875e.png)
 
 还有我们本次分享的主题之一，各种存储插件的 Agent 组件（CSI），它也必须运行在每一个节点上，用来在这个节点上挂载远程存储目录，操作容器的 Volume 目录。
 
@@ -311,7 +311,7 @@ PV 和 PVC 是 Kubernetes 存储体系里非常重要的两个资源，它们�
 一开始我也感到困惑，不知道这些资源是什么，如何使用，以及它们适用的场景。
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/ff0ee11c-52b3-49be-a6a0-0f1ad69b07f3.png" width="20%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/ff0ee11c-52b3-49be-a6a0-0f1ad69b07f3.png" width="20%" alt="怎么理解？" />
 </center>
 
 没关系，接下来我们将从不同角度对这些资源进行解读，希望能帮助大家建立概念。最后，我会介绍它们的具体用法。
@@ -364,7 +364,7 @@ PV 资源通常是由运维人员来创建的，因为集群内会提供哪些�
 
 3. 最后创建一个 Pod 并同时使用这个 PVC
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/5fa7d0ce-6a51-4c15-960d-db1276ec7cda.png)
+![Static Provisioning](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/5fa7d0ce-6a51-4c15-960d-db1276ec7cda.png)
 
 ##### 思考
 
@@ -399,7 +399,7 @@ PV 资源通常是由运维人员来创建的，因为集群内会提供哪些�
 
 2. 创建一个 Pod 并同时使用这个 PVC，这个流程两者都是一致的。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/e57c2884-ddea-490a-a43c-72951978b29d.png)
+![Dynamic Provisioning](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/e57c2884-ddea-490a-a43c-72951978b29d.png)
 
 ##### 思考
 
@@ -518,7 +518,7 @@ kubectl patch storageclass <STORAGE-CLASS-NAME> -p \
 
 适配工作由容器编排系统（如 Kubernetes）和存储提供商（SP）共同完成，CO 通过 gRPC 与 CSI 插件进行通信。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/57cdcfdc-cadb-482a-9c40-b7992ed26927.png)
+![CSI](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-storage-101-concepts/57cdcfdc-cadb-482a-9c40-b7992ed26927.png)
 
 CSI 其实蛮复杂的，涉及到的组件相当多，后面我会专门写一篇文章介绍 CSI 的工作原理以及遇到的挑战。
 

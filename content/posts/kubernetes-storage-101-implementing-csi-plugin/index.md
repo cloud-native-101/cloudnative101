@@ -7,7 +7,7 @@ keywords:
 - CSI
 title: "Kubernetes Storage 101: 浅谈如何实现一个 CSI 插件"
 subtitle: "深入解析 Kubernetes 存储"
-description: "本文详细介绍了 Container Storage Interface (CSI) 的工作机制和集成方法，探讨了 Kubernetes 存储插件的关键概念和实现指南。文章涉及 CSI 的必要性、架构设计、生命周期管理以及如何实现高效稳定的 CSI 插件，是 Kubernetes 存储领域的深度解读。"
+description: "深入解析 Container Storage Interface (CSI) 的工作原理、架构和集成方法，及其在 Kubernetes 存储插件中的应用和优化策略"
 date: 2023-08-26T18:58:22+08:00
 draft: false
 author: LQ
@@ -19,7 +19,7 @@ tags:
 - Kubernetes
 ---
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/c9dedf33-c414-400e-9dc7-d9db4102606f.png)
+![cover](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/c9dedf33-c414-400e-9dc7-d9db4102606f.png)
 
 话接上回 [《Kubernetes Storage 101: 浅谈 K8s 存储概念，解锁数据驱动的力量》](https://mp.weixin.qq.com/s/4bzZYgVhVmvkIZpLgu9jLw)，在之前的文章中我们共同探讨了 K8s 存储概念的基础知识，为我们的学习之旅奠定了坚实的基础。
 
@@ -29,11 +29,11 @@ tags:
 在接下来的内容中，我们将会了解到 CSI 的工作原理、核心概念以及如何将其集成到你的容器化环境中。
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/115f79a6-8713-46a1-98f1-7dfe7a34bd7c.png" width="10%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/115f79a6-8713-46a1-98f1-7dfe7a34bd7c.png" width="10%" alt="csi" />
 </center>
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/cf0dbc88-42b2-4b17-9664-d9ff27d50e20.png" width="70%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/cf0dbc88-42b2-4b17-9664-d9ff27d50e20.png" width="70%" alt="csi" />
 </center>
 
 ## 为什么需要 CSI ？它解决了什么问题？
@@ -57,7 +57,7 @@ Kubernetes 本身提供了一个强大的 Volume 插件系统，最直接的方�
 
 让我们重新回过来看下，[上面](https://mp.weixin.qq.com/s?__biz=MzU4MjY5NTc4OQ==&mid=2247491322&idx=1&sn=9562268f77f8d65e199f44ede2a664e4&chksm=fdb530f8cac2b9ee1a32d16819a11ba7cb280a370b9c85d33552af0ccbc7e4c5ea3c78d2b5da&scene=21#wechat_redirect)反复提到过的 **In-Tree** 和 **Out-Of-Tree** 这两个概念，我相信从字面意思上大家都已经理解了，再结合下面这张表格，大家心里是否都已经有了答案？
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/f63a853c-5285-4f8f-a92b-b12d186276bf.png)
+![In-Tree & Out-Of-Tree](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/f63a853c-5285-4f8f-a92b-b12d186276bf.png)
 
 ### 解决了什么痛点？
 
@@ -246,7 +246,7 @@ node-driver-registrar 是一个作为 Sidecar 容器运行的组件，其主要�
 
 我们需要记住这张能力关系组合表，它对部署 CSI 驱动程序和排查问题非常的有用。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/f466771f-2228-42b2-89bc-4719b3fffb6e.png)
+![关系组合表](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/f466771f-2228-42b2-89bc-4719b3fffb6e.png)
 
 ## 如何实现一个 CSI 插件？
 
@@ -258,7 +258,7 @@ node-driver-registrar 是一个作为 Sidecar 容器运行的组件，其主要�
 
 其中 `Identity Service` 负责提供 CSI 驱动程序的身份信息，`Controller Service` 负责 Volume 的管理，`Node Service` 负责将 Volume 挂载到 Pod 中。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/17d73994-aca8-4482-ae60-ce8ce4c1369a.png)
+![接口清单](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/17d73994-aca8-4482-ae60-ce8ce4c1369a.png)
 
 正如前面提到的，一个 CSI 驱动程序能提供什么样的能力，取决于各自存储厂商的实现，三个组件都有对外暴露能力的接口，比如
 
@@ -270,7 +270,7 @@ node-driver-registrar 是一个作为 Sidecar 容器运行的组件，其主要�
 
 在通常情况下，每个 Volume 都会经历完整的生命周期过程。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/b1cb5cb9-bad6-4b2e-a660-06e729c39dc4.png)
+![生命周期](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/b1cb5cb9-bad6-4b2e-a660-06e729c39dc4.png)
 
 从创建 PersistentVolumeClaim（PVC）开始，接着被 Pod 所使用，这个过程包括三个主要阶段：**Provision -> Attach -> Mount**。
 
@@ -348,7 +348,7 @@ spec:
 这两个容器通过本地 Socket (Unix Domain Socket, UDS)进行通信，并使用 gRPC 协议。CSI 插件直接与同一宿主机上的 K8s 组件进行交互，通过本机进程之间的 Unix 域套接字通信，相较于 TCP 套接字，具备更高的通信效率和性能。
 {{< /alert >}}
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/f057e23f-09d9-43e0-b57e-ac6dcd7b9419.png)
+![deploy](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/implementing-csi-plugin/f057e23f-09d9-43e0-b57e-ac6dcd7b9419.png)
 
 在部署 CSI Node 时，需要将宿主机上的 kubelet 目录(/var/lib/kubelet)挂载到驱动程序的容器内，且需将 Mount Propagation 设置为 `Bidirectional`。这样，驱动程序容器内的后续 Mount/Umount 操作能够传播到宿主机上。
 

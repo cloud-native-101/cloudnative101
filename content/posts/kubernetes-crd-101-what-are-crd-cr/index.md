@@ -6,7 +6,7 @@ keywords:
 - crd
 title: "Kubernetes CRD 101:  什么是 CRD、CR，这些到底在说啥"
 subtitle: "深入解析 Kubernetes 自定义资源"
-description: 本文详细介绍了 Kubernetes 中的自定义资源（CR）和自定义资源定义（CRD），通过实际例子阐述了它们的创建、使用和重要性。文章探讨了 CRD 的关键字段、自定义资源的验证方法，以及如何通过 RESTful API 管理自定义资源。适合 Kubernetes 开发者和管理员阅读，帮助他们更好地理解和利用 Kubernetes 的扩展能力。
+description: 本文深入探讨 Kubernetes 中的自定义资源和资源定义，包括创建、使用方法和重要性，特别适合开发者和管理员，助于理解和运用 Kubernetes 的扩展特性。
 slug: kubernetes-crd-101-what-is-crd
 date: 2021-11-08T08:18:00+08:00
 weight: 99

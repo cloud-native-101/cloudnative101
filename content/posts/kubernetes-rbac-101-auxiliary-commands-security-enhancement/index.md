@@ -8,7 +8,7 @@ keywords:
 - kubernetes security
 title: "Kubernetes RBAC 101: 如何使用辅助命令加强安全控制"
 subtitle: "深入解析 Kubernetes RBAC 辅助命令"
-description: 本文详细介绍了 Kubernetes 中用于加强安全控制的关键辅助命令，包括 kubectl auth can-i、kubectl-who-can、kubectl-rolesum 和 rbac-tool。文章探讨了这些工具的使用方法和优势，帮助读者更有效地理解和管理 RBAC 策略，确保 Kubernetes 集群的安全。适合 Kubernetes 管理员和开发人员阅读，以提升他们在云原生环境中的安全管理能力。
+description: 探索 Kubernetes 中增强安全的关键命令，包括 kubectl auth can-i、kubectl-who-can 等，助力管理员和开发者有效管理 RBAC 策略和集群安全。
 date: 2023-11-20T08:18:00+08:00
 weight: 99
 draft: false
@@ -21,7 +21,7 @@ tags:
 - Kubernetes RBAC 101
 ---
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/auxiliary-commands-security-enhancement/cc2d4e5e-0483-414f-a67f-d7a745284c62.png)
+![cover](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/auxiliary-commands-security-enhancement/cc2d4e5e-0483-414f-a67f-d7a745284c62.png)
 
 在上一篇 [《Kubernetes RBAC 101: 如何通过 OIDC 强化集群安全》](https://mp.weixin.qq.com/s/lh1b4xeledtR0q1ujK8rRQ) 中，我们探讨了使用基于 OIDC 的策略来增强 Kubernetes 集群的安全性。我们提到，错误配置的 RBAC 可能会导致严重的安全隐患，甚至可能让攻击者获得高级权限，从而完全控制整个集群。
 
@@ -196,7 +196,7 @@ Policies:
 
 下面是一个实际应用案例截图，我们可以清晰的看到这个服务被赋予了哪些权限。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/auxiliary-commands-security-enhancement/a5c4e849-7872-469d-b0fb-6844ddb8adfd.png)
+![实际应用案例](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/auxiliary-commands-security-enhancement/a5c4e849-7872-469d-b0fb-6844ddb8adfd.png)
 
 在实际开发过程中，如果发现有些资源创建不出来或者其他权限异常，我们通过该工具能够快速定位到原因。
 
@@ -243,7 +243,7 @@ kubectl rbac-tool viz --outformat dot \
 
 效果如下所示：
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/auxiliary-commands-security-enhancement/97399039-fef0-48b0-8966-b6e4ac6ae229.png)
+![效果如下所示](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/auxiliary-commands-security-enhancement/97399039-fef0-48b0-8966-b6e4ac6ae229.png)
 
 ### kubectl rbac-tool lookup
 
@@ -310,7 +310,7 @@ kubectl rbac-tool viz --outformat dot \
 
 以前用过 [rakkess](https://github.com/corneliusweig/rakkess "rakkess")，它在对资源的访问矩阵表现的也挺友好。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/auxiliary-commands-security-enhancement/9606a16d-e599-46d2-b1be-ffc9405fd843.png)
+![rakkess](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/auxiliary-commands-security-enhancement/9606a16d-e599-46d2-b1be-ffc9405fd843.png)
 
 ### rbac-tool gen
 
@@ -382,7 +382,7 @@ rules:
 好了，今天的分享就到这里，感谢你的阅读！ 🙌🏻😁📃 期待我们的下次见面！🤘🚀
 
 <center>
-<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice.gif" width="30%" />
+<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice.gif" width="40%" alt="Nice" />
 </center>
 
 ## References

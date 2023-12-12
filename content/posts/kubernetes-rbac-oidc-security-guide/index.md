@@ -21,7 +21,7 @@ tags:
 - Kubernetes RBAC 101
 ---
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-rbac-oidc-security-guide/bf42248e-a862-467f-96fb-410db965d594.png)
+![cover](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-rbac-oidc-security-guide/bf42248e-a862-467f-96fb-410db965d594.png)
 
 🔐 **Kubernetes 集群管理中的安全难题**
 
@@ -145,11 +145,19 @@ OIDC 是一个开放标准，Kubernetes 可以与多种兼容 OIDC 的身份提�
 
 我们需要在 Casdoor 上先建立一个 `Application:` **kind-oidc**，获取 `Client ID` 和 `Client secret`。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-rbac-oidc-security-guide/0c07b29e-e92c-441f-a3c0-032f50799f46.png)
+{{< figure
+    src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-rbac-oidc-security-guide/0c07b29e-e92c-441f-a3c0-032f50799f46.png"
+    alt="注册应用程序"
+    caption="注册应用程序"
+    >}}
 
 另外我还创建了一个用户: **oidc-user**，方便后续做验证。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-rbac-oidc-security-guide/5b3c23cd-8788-4040-ae5c-2dd149714a55.png)
+{{< figure
+    src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-rbac-oidc-security-guide/5b3c23cd-8788-4040-ae5c-2dd149714a55.png"
+    alt="创建用户"
+    caption="创建用户"
+    >}}
 
 ### 2. 使用 Kind 在本地安装新集群
 
@@ -418,7 +426,7 @@ kubectl create clusterrolebinding oidc-team-leader-binding \
 补充说明：JWT 的 `groups` 字段支持数组格式，这意味着可以将单个用户添加到多个组中。结合 Kubernetes 的授权机制，这为灵活且精确的权限管理提供了强大的支持。
 
 <center>
-<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice-1.gif" width="40%" />
+<img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/emoji/nice-1.gif" width="40%" alt="Nice" />
 </center>
 
 > 💡 在实际操作中，这些步骤应该都是自动化的流程。
@@ -436,7 +444,7 @@ kubectl create clusterrolebinding oidc-team-leader-binding \
 
 下面是一个使用谷歌身份平台进行 Kubernetes 身份验证的例子:
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-rbac-oidc-security-guide/kubelogin.gif)
+![kubelogin](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-rbac-oidc-security-guide/kubelogin.gif)
 
 Cool，那么怎么配置呢？
 

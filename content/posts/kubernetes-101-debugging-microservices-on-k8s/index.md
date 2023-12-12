@@ -24,7 +24,7 @@ tags:
 - Kubernetes Debugging 101
 ---
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/077d6ec9-21cc-4884-969e-a5080f7c56b6.webp)
+![cover](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/077d6ec9-21cc-4884-969e-a5080f7c56b6.webp)
 
 现如今已经全面进入了云原生时代，不论是从软件架构、**开发模式**又或者是在部署方式上，它们和传统模式相比较而言，都有着巨大的差异，可以说是云原生改变了开发人员的思考方式。
 
@@ -43,7 +43,7 @@ Kubernetes 是迄今为止运行微服务的最佳环境，这点是毋庸置疑
 很多人可能不屑于聊 `Debug` 这个话题，觉得它很低级， Debug 不是程序员应该天生具备的能力吗，有啥可聊的？<br/>没错，对于掌握一些方法论的同学来说，确实不值一提。但是一旦服务上云后，其实你会发现，这里就会出现很多比较~~有意思~~的事情，好比说许多现有的本地调试工具和最佳实践都无法使用了，所以开发人员首先需要在心态和习惯上做出一些改变。
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/dbbd33dd-66aa-4c64-98c5-23a3ff0adeb2.webp" width="40%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/dbbd33dd-66aa-4c64-98c5-23a3ff0adeb2.webp" width="40%" alt="X" />
 </center>
 <center>X</center>
 
@@ -218,9 +218,12 @@ sudo -E kubefwd svc -n foo -n bar \
 但是在真实世界中，因为受限于本地电脑的性能，确实难以开发大型的微服务应用。
 
 <center>
-    {{< figure src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/28780a52-06cb-40bb-83e7-c46ce9ade2e7.webp" title="场景三" >}}
+{{< figure
+    src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/28780a52-06cb-40bb-83e7-c46ce9ade2e7.webp"
+    alt="场景三"
+    caption="场景三"
+    >}}
 </center>
-<center>场景三</center>
 
 搭建和维护本地开发环境是相当困难的，即便你搭建成功了，事实上你的开发环境与生产环境也是会存在差异的，所以说 `pure offline` 的方式肯定不是一个可行的方向。
 
@@ -260,7 +263,7 @@ sudo -E kubefwd svc -n foo -n bar \
 
 ## 工具
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/b8932ed9-dc13-40eb-99a9-dab222669b77.webp)
+![工具](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/b8932ed9-dc13-40eb-99a9-dab222669b77.webp)
 
 ### [Telepresence](https://www.telepresence.io/ "Telepresence")
 
@@ -487,7 +490,7 @@ Hello, world!
 
 浏览器内集群域名仍然有效，说明 telepresence 其实影响了本地整个机器环境。
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/123d6759-ce6c-47ab-809c-36f7ff1a4351.webp)
+![IMG](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/123d6759-ce6c-47ab-809c-36f7ff1a4351.webp)
 
 ##### #7. 断开连接
 
@@ -1022,7 +1025,7 @@ nginx-local-kt-cvmpy    1/1     Running   0          8m38s   control-by=kt,kt-ro
 
 ### [Nocalhost](https://nocalhost.dev/ "Nocalhost")
 
-![](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/640.gif)
+![Nocalhost](https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/640.gif)
 
 Nocalhost 是一款开源的基于 IDE 的云原生应用开发工具，正如下图所见，它完全抛弃了以往本地的开发模式，直接在 Kubernetes 集群中构建、测试和调试应用程序。
 
@@ -1142,7 +1145,7 @@ containers:
 该模式会将原工作负载的副本数缩减为 1， 新生成的 Pod 会直接替换掉原来的服务，有点独占开发环境的意思。
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/d628f8e9-ff34-4aa3-b3a4-1c278a3b7821.webp" width="40%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/d628f8e9-ff34-4aa3-b3a4-1c278a3b7821.webp" width="40%" alt="Repliace DevMode" />
 </center>
 <center>Repliace DevMode</center>
 
@@ -1151,7 +1154,7 @@ containers:
 一般在团队开发中，我们建议还是采用 `Duplicate DevMode`，它会针对原应用，新复制出来一个部署，不会破坏掉原有的开发环境。
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/fe6df833-bfc5-49cf-9e8d-02116ad98b9d.webp" width="40%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/fe6df833-bfc5-49cf-9e8d-02116ad98b9d.webp" width="40%" alt="Duplicate DevMode" />
 </center>
 <center>Duplicate DevMode</center>
 
@@ -1160,7 +1163,7 @@ containers:
 理想情况下 Nocalhost 和 IDE 搭配使用体验最佳，但是对于 `VIM 党`来说，其实也是可以直接使用的。
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/60a4d2d9-cd22-4711-aa7f-a3da37eb830f.webp" width="40%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/60a4d2d9-cd22-4711-aa7f-a3da37eb830f.webp" width="40%" alt="Copy Terminal Exec Command" />
 </center>
 <center>Copy Terminal Exec Command</center>
 
@@ -1177,7 +1180,7 @@ app-samples-i90-9-94734dea-84886c4fbd-444r9
 使用过程中你可以关掉 IDE，但是你不要点掉这个 “红色小锤子”，复制开发模式环境它会一直在 K8s 集群里运行着。
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/90755fa5-26df-49cc-8cbe-46053695ee25.webp" width="30%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/90755fa5-26df-49cc-8cbe-46053695ee25.webp" width="30%" alt="End Develop" />
 </center>
 <center>End Develop</center>
 
@@ -1250,7 +1253,7 @@ pvc-7fdbed23-79b7-4448-85cc-1f625914af1f   5Gi        RWO            Delete     
 其实很多事情在我们埋头苦干之前，都要先学会抬头看路：业界有没解决方案？他们是怎么做的？尽可能降低我们自己的试错成本。
 
 <center>
-    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/51d1da39-52c8-43cb-b264-6c801a47ffad.webp" width="45%" />
+    <img src="https://cdn.jsdelivr.net/gh/cloud-native-101/files@main/imgs/kubernetes-101-debugging-microservices-on-k8s/51d1da39-52c8-43cb-b264-6c801a47ffad.webp" width="45%" alt="twitter" />
 </center>
 <center>https://twitter.com/danielbryantuk/status/1524082079897694208</center>
 
