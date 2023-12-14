@@ -9,7 +9,6 @@ subtitle: "深入解析 Kubernetes 自定义资源"
 description: 本文深入探讨 Kubernetes 中的自定义资源和资源定义，包括创建、使用方法和重要性，特别适合开发者和管理员，助于理解和运用 Kubernetes 的扩展特性。
 slug: kubernetes-crd-101-what-is-crd
 date: 2021-11-08T08:18:00+08:00
-weight: 99
 draft: false
 author: LQ
 toc: true

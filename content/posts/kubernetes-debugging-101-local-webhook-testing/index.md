@@ -8,7 +8,6 @@ title: "Kubernetes Debugging 101: 如何在本地调试 K8s Webhook"
 subtitle: "云原生小技巧: 如何在本地调试 K8s Webhook"
 description: 本指南为 Kubernetes 开发者提供本地调试 Webhook 的高效策略，包括使用自签证书、调整 Makefile 和使用隧道工具，助力优化本地开发和测试流程。
 date: 2023-11-27T08:18:00+08:00
-weight: 99
 draft: false
 author: LQ
 toc: true

@@ -10,7 +10,6 @@ title: "Kubernetes RBAC 101: 如何通过 OIDC 强化集群安全"
 subtitle: "深入解析 Kubernetes 安全管理"
 description: 本文详细介绍了如何通过整合 OpenID Connect (OIDC) 来增强 Kubernetes 集群的安全性。文章探讨了 Kubernetes 的认证与授权机制、RBAC 的核心概念，以及 OIDC 在 Kubernetes 中的配置和应用。适合 Kubernetes 管理员和开发人员阅读，帮助他们在云原生环境中实现更安全、高效的权限管理和访问控制。
 date: 2023-11-13T08:18:00+08:00
-weight: 99
 draft: false
 author: LQ
 toc: true

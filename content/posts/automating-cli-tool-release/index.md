@@ -7,7 +7,6 @@ title: "Cloud Native Tools 101: 如何自动化发布 CLI 工具"
 subtitle: "云原生小技巧: 如何自动化发布 CLI 工具？"
 description: 本文详解如何在云原生时代自动化发布 CLI 工具，着重于跨平台兼容性、Makefile 自动化构建与 GitLab CI/CD 发布流程，适合开发者优化构建发布。
 date: 2023-12-04T08:18:00+08:00
-weight: 99
 draft: false
 author: LQ
 toc: true

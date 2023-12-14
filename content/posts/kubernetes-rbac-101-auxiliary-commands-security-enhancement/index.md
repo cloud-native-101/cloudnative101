@@ -10,7 +10,6 @@ title: "Kubernetes RBAC 101: 如何使用辅助命令加强安全控制"
 subtitle: "深入解析 Kubernetes RBAC 辅助命令"
 description: 探索 Kubernetes 中增强安全的关键命令，包括 kubectl auth can-i、kubectl-who-can 等，助力管理员和开发者有效管理 RBAC 策略和集群安全。
 date: 2023-11-20T08:18:00+08:00
-weight: 99
 draft: false
 author: LQ
 toc: true

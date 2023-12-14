@@ -10,7 +10,6 @@ subtitle: "云原生小技巧：OrbStack — 本地 K8s 环境的域名映射优
 description: 探索 OrbStack：一款针对本地 Kubernetes 环境的域名映射优化工具。本文深入分析了其独特功能，如为容器赋予个性化域名和支持 mDNS 域名解析，以及与 Kind 集群的协作，旨在提高 Kubernetes 开发者的效率和本地开发体验。
 date: 2023-11-06T08:18:00+08:00
 lastmod: 2023-12-09T11:07:04+08:00
-weight: 99
 draft: false
 author: LQ
 toc: true
