@@ -1,3 +1,7 @@
+.max-w-prose {
+  max-width: 75ch
+}
+
 .max-w-prose h2 {
   position: relative;
   padding: 2px 13px 2px;
